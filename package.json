@@ -1,0 +1,28 @@
+{
+  "name": "koa-db-test",
+  "version": "1.0.0",
+  "description": "Test work",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon -w ./ ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesKotov/koa-db-test.git"
+  },
+  "author": "Evgenii Strigo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesKotov/koa-db-test/issues"
+  },
+  "homepage": "https://github.com/JamesKotov/koa-db-test#readme",
+  "dependencies": {
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.6",
+    "koa-convert": "^1.2.0",
+    "koa-router": "^7.4.0",
+    "koa2-mysql-wrapper": "^2.0.1",
+    "lru-cache": "^5.1.1"
+  }
+}
