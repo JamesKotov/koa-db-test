@@ -12,10 +12,8 @@ const cache = new LRU(options);
 module.exports.get = function (key) {
     const result = cache.get(key);
     if (result) {
-        console.log('hit the cache for key', key);
         return JSON.parse(result);
     }
-    console.log('cache is empty for key', key);
     return result;
 
 };

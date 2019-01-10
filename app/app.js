@@ -22,4 +22,11 @@ app.use(mysql({host: config.dbHost, user: config.dbUser, password: config.dbPass
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(config.serverPort);
+const port = config.serverPort;
+
+// server
+const server = app.listen(port, () => {
+    console.log(`Server listening on port: ${port}`);
+});
+
+module.exports = server;
