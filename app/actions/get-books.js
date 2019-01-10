@@ -15,10 +15,9 @@ module.exports = async (ctx) => {
     const params = [];
     let query = 'SELECT SQL_CALC_FOUND_ROWS ' +
         '`books`.`id`, `books`.`title`, `books`.`year`, `books`.`description`, `books`.`image`, ' +
-        'GROUP_CONCAT(`authors`.`name` SEPARATOR \'|\') AS `authors` ' +
+        'GROUP_CONCAT(`authors-to-books`.`author_id` SEPARATOR \'|\') AS `authors` ' +
         'FROM `books`' +
-        'INNER JOIN `authors-to-books` ON `books`.`id` = `authors-to-books`.`book_id` ' +
-        'INNER JOIN `authors` ON `authors`.`id` = `authors-to-books`.`author_id` ';
+        'INNER JOIN `authors-to-books` ON `books`.`id` = `authors-to-books`.`book_id`';
 
     let offset = 0;
     let limit = defaultOnPage;
@@ -96,7 +95,7 @@ module.exports = async (ctx) => {
     }
 
     if (result) {
-        result.forEach((item) => item.authors = item.authors.split('|').sort());
+        result.forEach((item) => item.authors = item.authors.split('|').map(Number));
 
         const counterResult = await ctx.myPool().query('SELECT FOUND_ROWS() as count', []);
         if (counterResult.errno) {

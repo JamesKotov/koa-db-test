@@ -227,7 +227,7 @@ describe('routes', () => {
                     res.body.books.should.to.be.an('array');
 
                     res.body.books.forEach((book) => {
-                        book.authors.should.to.include(authorName);
+                        book.authors.should.to.include(authorId);
                     });
                     done();
                 });
